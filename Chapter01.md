@@ -32,11 +32,11 @@ This seems straightforward but it helps you make a lot of assumptions to narrow 
     - To access root in BlueStacks to get its cached/downloaded files, do this:
       - Grab adb from [here](https://developer.android.com/studio/releases/platform-tools.html) and put it somewhere safe, I put it in C:\Android\SDK\platform-tools since that's where it installs normally
       - !!! BlueStacks has to be open and running (not an app, just GUI/engine working) !!!
-      - adb shell
-      - /system/xbin/bstk/su (obtain SuperUser/root to access the files to copy them)
-      - pm list packages (if you don't know package name, it's in the App Store url, e.g. [jp.pokemon.koiking](https://play.google.com/store/apps/details?id=jp.pokemon.koiking&hl=en)
-      - cd /data/app/
-        - cp <packagename>-1.apk /sdcard/windows/BstSharedFolder (if you want to grab a clean APK)
-      - cd /data/data/<packagename> (has the files you want/it downloaded, usually wanna then "cd files")
-      - cp -R -f * /sdcard/windows/BstSharedFolder
-        - this does recursive, forced, copy to the BlueStacks Shared Folder, which as of writing, is at "C:\ProgramData\BlueStacks\Engine\UserData\SharedFolder" (ProgramData is hidden in Windows by default, copy-pasting path should work)
+      - ```
+        adb shell
+        /system/xbin/bstk/su (obtain SuperUser/root to access the files to copy them)
+        pm list packages (if you don't know package name, it's in the App Store url, e.g. [jp.pokemon.koiking](https://play.google.com/store/apps/details?id=jp.pokemon.koiking&hl=en)
+        cd /data/app/
+        cp *packagename*-1.apk /sdcard/windows/BstSharedFolder (if you want to grab a clean APK)
+        cd /data/data/*packagename* (has the files you want/it downloaded, usually wanna then "cd files")
+        cp -R -f * /sdcard/windows/BstSharedFolder (this does recursive, forced, copy to the BlueStacks Shared Folder, which as of writing, is at "C:\ProgramData\BlueStacks\Engine\UserData\SharedFolder" (ProgramData is hidden in Windows by default, copy-pasting path should work))
